@@ -1,0 +1,34 @@
+# L'analyse textuelle à la rescousse
+
+## L'analyse textuelle : quezako ?!
+
+*  Ensemble des méthodes informatisées permettant de traiter le langage 
+naturel
+* Exemples :
+ * Analyse fréquentielle (bags of word, n-grams)
+ * Analyse thématique (Latent dirichlet allocation, BERTopic)
+ * Extraction d’information structurée (RAG avec LLM)
+ * Etc.
+ 
+ 
+## L'analyse textuelle : la problématique
+
+On vous donne un corpus de textes/documents 
+
+* Que faites-vous ? 
+  ![](img/interrogation.png)
+
+
+## Première solution
+
+Evident mais à rappeler : 
+
+
+* Ouvrir quelques documents !
+  ![](img/detective.png)
+ 
+
+## L'analyse fréquentielle : compter les mots
+
+* approche sac de mots (bags of word)
+  ![](img/scrabble.jpg){width=600px}
