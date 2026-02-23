@@ -32,3 +32,28 @@ Evident mais à rappeler :
 
 * approche sac de mots (bags of word)
   ![](img/scrabble.jpg){width=600px}
+  
+  
+## L'analyse fréquentielle : Bag of words
+
+* On compte les mots
+* L'ordre n'est ici pas considéré
+* Top 10 des mots les plus fréquents sur l'ensemble du corpus, sur un document (absolu, relatif)
+* Nuage de mots
+* O(n)
+
+
+## L'analyse fréquentielle : Nuage de mots
+
+![](img/wordcloud_fr.png)
+
+
+## L'analyse fréquentielle : prétraiter
+
+* enlever les mots-vides (stopwords) 
+	* articles (le, la, les, un, des, du, etc...)
+	* pronoms (je, mon, ce, qui, on)
+	* prépositions (à, de, dans)
+	* conjonction (et, ou, mais)
+	* adverbe (ne ... pas, ici, très, toujours)
+* regrouper les mots en notions (lemmatisation, stemming)
