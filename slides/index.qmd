@@ -37,3 +37,5 @@ format:
 
 {{< include Accords.qmd >}}
 {{< include Analyse_textuelle.qmd >}}
+{{< include Analyse_thematique.qmd >}}
+{{< include Extraction.qmd >}}
