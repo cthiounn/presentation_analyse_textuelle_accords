@@ -1,3 +1,107 @@
-# L'analyse thématique
+# La modélisation thématique
 
-## L'analyse thématique : quezako ?!
+## La modélisation thématique : quezako ?!
+
+* Aussi connu sous le nom de topic modeling
+* Permet de trouver des thématiques latentes
+
+
+## La modélisation thématique : principes généraux
+
+* Un document est composé de mots
+* Les mots ne sont pas choisis au hasard
+* Certains mots sont des marqueurs de sujets (topic)
+* Hypothèse centrale : un document est un mélange de sujets et un sujet est composé d'un distribution particulière de mots
+* But : découvrir/construire les sujets, en observant les distributions des mots, dans le corpus et dans les documents
+
+
+## La modélisation thématique : deux applications
+
+* En population générale : retrouve t'on les thématiques déclarées/redressées ?
+* En population restreinte à une thématique : quels sont les sujets usuels traités ?
+
+
+
+## Latent Dirichlet Allocation (LDA)
+
+* Mécanisme de génération de documents, en se donnant des topics et leur distribution textuelle
+* "Problème dual" : à document généré, deviner les topics qui ont servi, en se donnant un nombre k de topics
+	* par approximation computationnelle 
+
+## LDA : structure générative
+
+1. Choisir le nombre de mots à générer pour le document (N)
+2. Choisir la distribution des sujets pour un document selon une distribution de Dirichlet. ($\theta$)
+3. Pour chaque mot du document :
+   - Sélectionner un sujet selon la distribution de sujets du document.
+   - Sélectionner un mot selon la distribution de mots associée à ce sujet.
+
+## Exemple
+
+
+> sujet_1 = CET; sujet_2 = télétravail
+
+Soit la distribution suivante:
+
+* sujet_1_distribution = {"compte":0.16,"CET":0.5,"épargne":0.16,"temps":0.16}
+* sujet_2_distribution = {"télétravail":0.7,"droit":0.15,"déconnexion":0.15}
+
+> Génération de 4 mots (N=4)
+
+Génération de la distribution en sujet du document (admettons sujet_1=3/4, sujet_2=1/4)
+Pour le premier mot :
+
+* selection d'un sujet selon la distribution 3/4 ; 1/4   => sujet_1
+* parmi la distribution du sujet_1 ={"compte":0.16,"CET":0.5,"épargne":0.16,"temps":0.16}, on tire un mot  => "CET"
+
+>phrase générée = CET
+
+Pour le deuxième mot : 
+* selection d'un sujet selon la distribution 3/4 ; 1/4   => sujet_1
+* parmi la distribution du sujet_1 ={"compte":0.16,"CET":0.5,"épargne":0.16,"temps":0.16}, on tire un mot  => "compte"
+
+>phrase générée = CET compte
+:::
+
+## LDA : découverte de topics 
+
+* *a posteriori*, les documents sont *a priori* supposés générés par la méthode précédente
+* un nombre de sujets à définir (**hyperparamètre K**), car on ne peut pas savoir *a priori* combien de sujets composent les documents
+* Gibbs-Sampling :
+	1. Initialiser aléatoirement une attribution de sujets aux mots du corpus (**N nombre de mots total**).
+	2. Mettre à jour ces attributions en fonction de la probabilité conditionnelle d'un mot appartenant à un sujet donné, basée sur les occurrences dans le corpus. (*)
+	3. Répéter l’opération jusqu’à convergence (**I nombre d'itérations**).
+* Complexité : O(I*N*K)
+
+
+## Problèmes LDA
+
+* coût computationnel :
+	* sur corpus volumineux -> échantillon
+	* sur document long (N) -> (N)ettoyer
+* choix de l'hyperparamètre K (nombre de topics)
+* choix de l'hyperparamètre I (nombre d'itérations)
+
+
+## Solutions LDA
+
+
+* Nettoyage :
+	* enlever les parties non pertinentes du document (préambule) <- utilisation d'une modèle de production de sommaire
+	* enlever les mots rares (présent dans moins de X documents) et les mots trop présents (présent dans Y% des documents)
+* Choix de l'hyperparamètre K :
+	* grid search avec maximisation de la cohérence intra-topic
+	* à dire d'experts
+* Choix de l'hyperparamètre I :
+	* grand si possible pour assurer la convergence de Gibbs-Sampling
+
+
+## Visualisation LDA
+
+<iframe src="anim/lda_vis.html" width="80%" height="80%"></iframe>
+
+## Visualisation LDA
+
+![](img/LDA.png)
+
+## BERTopic

@@ -132,31 +132,31 @@ LLM : lecture du prompt enrichi + génération d’une réponse
 	• Informations réparties sur plusieurs segments ou articles → perte d’information
 
 
-## Discussion - perspective 
+## Discussion - perspective {.scrollable}
 
 Exploitation possible grâce à l’adaptation d’outils de traitement du langage naturel existants !
 
 ⚙️Méthodes efficaces 
 
- 	- Réduction de dimension, calcul distribué, traitement séquentiel
+ 	Réduction de dimension, calcul distribué, traitement séquentiel
 
 ❗Limites actuelles
 
-Résultats insuffisants sur variables multimodales 
+	Résultats insuffisants sur variables multimodales 
 
-Besoin d’étendre à toutes les thématiques
+	Besoin d’étendre à toutes les thématiques
 
 🤖 Évolutions technologiques : 
 
-Workflows  
+	Workflows  
 
-Systèmes multi-agents
+	Systèmes multi-agents
 
 ⚠️ Précautions et limitations 
 
-Sécurité des données
+	Sécurité des données
 
-Hallucinations de l’IA 
+	Hallucinations de l’IA 
 
-Impact écologique 
+	Impact écologique 
 
