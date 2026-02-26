@@ -5,10 +5,10 @@
 *  Ensemble des méthodes informatisées permettant de traiter le langage 
 naturel
 * Exemples :
- * Analyse fréquentielle (bags of word, n-grams)
- * Analyse thématique (Latent dirichlet allocation, BERTopic)
- * Extraction d’information structurée (RAG avec LLM)
- * Etc.
+	* Analyse fréquentielle (bags of word, n-grams)
+	* Analyse thématique (Latent dirichlet allocation, BERTopic)
+	* Extraction d’information structurée (RAG avec LLM)
+	* Etc.
  
  
 ## L'analyse textuelle : la problématique
