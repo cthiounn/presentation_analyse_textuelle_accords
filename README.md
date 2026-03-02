@@ -1,1 +1,0 @@
-# Présentation analyse textuelle
