@@ -2,48 +2,59 @@
 
 ## Extraire de l’information dans les accords
 
+:::{.fragment}
 🎯   Extraire les variables clés identifiées
+:::
 
+:::{.fragment}
 Progrès majeurs grâce aux modèles de langue de grande taille  (LLMs).
+:::
 
-Deux approches :
+:::{.fragment}
+Deux approches avec les LLMs:
 
-	Génération libre 
+	• Génération libre 
+	• Extraction structurée 
+:::
 
-	Extraction structurée 
 
+:::{.fragment}
 Retrieval Augmented Generation (RAG) : Recherche des segments pertinents + génération contrôlée
+:::
 
+:::{.fragment}
 Extraction par fenêtre glissante
-
+:::
 
 ## Application aux heures supplémentaires
 
+:::{.fragment}
 📄 Contenu
 
 	• Contingent annuel d’heures supplémentaires → 220 h/an (Code du travail)
-
 	• Règles de majoration
-
 	• Repos compensateur
+:::
 
+
+:::{.fragment}
 📊 Échantillon
 
-	• Entraînement : 1000 accords (2024, publics, anonymisés)
-
+	• Inférence : 1000 accords (2024, publics, anonymisés)
 	• Évaluation : tirage aléatoire de 100 accords
+:::
 
+:::{.fragment}
 🖋️     Annotation
 
 	• Double annotation manuelle (validation croisée)
-
 	• < 5 cas ambigus → résolution par consensus
-
+:::
 
 
 ## La recherche documentaire : Retrieval
 
-Etape 1 & 2- Chargement + Découpage des documents
+**Etape 1 & 2- Chargement + Découpage des documents**
 
 Segmenter les accords en paragraphes (chunks) 
 
@@ -51,7 +62,7 @@ Segmenter les accords en paragraphes (chunks)
 
 ## La recherche documentaire : Retrieval
 
-Etape 3 - Embedding 
+**Etape 3 - Embedding**
 
 Transformer chaque chunk de texte en un vecteur numérique (embedding) 
 
@@ -59,7 +70,7 @@ Transformer chaque chunk de texte en un vecteur numérique (embedding)
 
 ## La recherche documentaire : Retrieval
 
-Etape 4 - Stockage dans une base vectorielle 
+**Etape 4 - Stockage dans une base vectorielle**
 
 Enregistrer tous les embeddings dans une base vectorielle (optimisée pour la recherche de similarité). 
 
@@ -67,7 +78,7 @@ Enregistrer tous les embeddings dans une base vectorielle (optimisée pour la re
 
 ## La recherche documentaire : Retrieval
 
-Etape 5 & 6 - Embedding de la question + Recherche dans la base vectorielle 
+**Etape 5 & 6 - Embedding de la question + Recherche dans la base vectorielle**
 
 Transformer la question utilisateur en vecteur
 
@@ -77,7 +88,7 @@ Trouver les k paragraphes les plus proches dans la base (Retrieval) : calcul de 
 
 ## Augmented generation
 
-Etape 7 - Augmented 
+**Etape 7 - Augmented**
 
 Formater : les paragraphes sont récupérés et injectés dans le prompt du LLM.
 
@@ -85,7 +96,7 @@ Formater : les paragraphes sont récupérés et injectés dans le prompt du LLM.
 
 ## Augmented generation
 
-Etape 8 - Generation
+**Etape 8 - Generation**
 
 LLM : lecture du prompt enrichi + génération d’une réponse 
 
@@ -93,70 +104,98 @@ LLM : lecture du prompt enrichi + génération d’une réponse
 
 ## Extraction d’information avec RAG
 
-* Outil Ollama
-* ✂️ Découpage  : 
-	* Naïf : Découpage récursif + zone de chevauchement 
-	* Par article : Structure logique  du document  	
+* Outil [Ollama](https://ollama.com/) <sup style="font-size:0.7em;color:gray">librairie de déploiement de LLMs</sup>
+* ✂️ Découpage  :
+
+	• Naïf : Découpage récursif + zone de chevauchement
+	
+	• Par article : Structure logique  du document  	
 
 
 ## Analyse de sensibilité à l’hyperparamètre k  
 
+:::{.fragment}
 📌 k = nombre de segments récupérés
+:::
 
+:::{.fragment}
 🔍 Analyse Llama3.1
-	
+
 	• Découpage par article : optima locaux à k = 2 et k = 6
-	
 	• Découpage naïf : –20 pts de précision à k = 5 (segments ≥ 15 000 caractères)
+:::
 
+:::{.fragment}
 ⚠️ Conclusion 
-	
-	• Trop d’articles non pertinents → dégradation de la précision
 
+	• Trop d’articles non pertinents → dégradation de la précision
+:::
 
 
 ## Les limites du modèle RAG 
 
+:::{.fragment}
 🔎 Qualité du retrieval
-	
+
 	• Segments manquants ou mal identifiés → réponses inadéquates
+:::
 
+:::{.fragment}
 💭 Hallucinations LLM
+:::
 
+:::{.fragment}
 📍 Sensibilité à la position
-	
+
 	• Infos au milieu / dispersées → risque accru d’erreurs
+:::
 
+:::{.fragment}
 ✂️ Limites du découpage
-	
+
 	• Informations réparties sur plusieurs segments ou articles → perte d’information
+:::
 
+## Discussion - perspective
 
-## Discussion - perspective {.scrollable}
+Extraction possible grâce aux outils existants !
 
-Exploitation possible grâce à l’adaptation d’outils de traitement du langage naturel existants !
-
+:::{.fragment}
 ⚙️Méthodes efficaces 
 
- 	Réduction de dimension, calcul distribué, traitement séquentiel
+	• Réduction de dimension, calcul distribué, traitement séquentiel
+:::
 
+:::{.fragment}
 ❗Limites actuelles
 
-	Résultats insuffisants sur variables multimodales 
+	• Résultats insuffisants sur variables multimodales 
+	• Besoin d’étendre à toutes les thématiques
+:::
 
-	Besoin d’étendre à toutes les thématiques
-
+:::{.fragment}
 🤖 Évolutions technologiques : 
 
-	Workflows  
+	• Workflows
+	• Systèmes multi-agents
+:::
 
-	Systèmes multi-agents
+:::{.fragment}
+⚠️ Précautions et limitations
 
-⚠️ Précautions et limitations 
+	• Sécurité des données
+	• Hallucinations de l’IA 
+	• Impact écologique 
+:::
 
-	Sécurité des données
+## Fin 🤖
 
-	Hallucinations de l’IA 
+:::{.fragment .center}
+Merci de votre attention !
+:::
 
-	Impact écologique 
+:::{.fragment .center}
+![](img/interrogation.png)
 
+Des questions ? 
+:::

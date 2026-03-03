@@ -271,23 +271,98 @@ Grand si possible pour assurer la convergence de Gibbs-Sampling
 
 ## BERTopic
 
-* même principe que le LDA
-* librairie framework
-* davantage de flexibilité
+::: {.callout-note title="Fonctionnement" .fragment}
+* Même principe que le LDA
+* Sauf qu'on lache la partie probabiliste pour des embeddings sémantiques
+* Librairie framework avec plusieurs modules
+:::
+
+::: {.callout-tip title="Avantages" .fragment}
+* Davantage de flexibilité
+* Comprend le contexte, les synonymes (vs LDA qui comptent les mots)
+:::
 
 ## Principe de BERTopic
 
 ![](img/BERTopic.png)
 
-méthodologie en deux temps :
+Méthodologie en deux temps :
 
-1. Projeter/Réduire/Regrouper
-2. Caractériser
+1. Projeter/Réduire/Regrouper **les documents**
+2. Caractériser **les documents** *avec des mots*
+
+## Embedding - représentation vectorielle numérique
+
+- On peut plonger les mots dans un espace vectoriel sémantique <sup style="font-size:0.7em;color:gray">qui permet de mesurer les synonymes/antonymes</sup> 
+- Vecteur fixe <sup style="font-size:0.7em;color:gray">1 mot = 1 vecteur</sup> ou vecteur contextuel <sup style="font-size:0.7em;color:gray">1 mot + son contexte = 1 vecteur</sup>  
+- Représentation vectorielle d'un document <sup style="font-size:0.7em;color:gray">moyenne/médiane de ses vecteurs, sentence transformers</sup>  
+- Dimension de 384 et plus de 1024 
+
+## Réduire la dimension et clustering
+
+::: {.callout-note title="Réduction de dimension ?" .fragment}
+* Débruitage, dimensions peu informatives ou redondantes
+* TruncatedSVD, PCA, UMAP (projection)
+:::
+
+::: {.callout-note title="Clustering" .fragment}
+* HDBSCAN
+* k-Means
+* etc.
+:::
+
+## Tokeniser et caractériser
+
+::: {.callout-note title="Tokeniser" .fragment}
+* Méthodes de preprocessing vues au chapitre précédent (CountVectorizer=ngrams)
+* POS (Part Of Speech tagging)
+* Jieba (Tokenisation du chinois)
+:::
+
+::: {.callout-note title="Caractériser" .fragment}
+* **TF-IDF** : mesure l’importance d’un mot dans un document, en augmentant son poids s’il est fréquent dans ce document et en le diminuant s’il est fréquent dans l’ensemble du corpus.
+* **c-TF-IDF** : mesure l’importance d’un mot dans un **cluster** (assimilé à un document), en augmentant son poids s’il est fréquent dans ce cluster et en le diminuant s’il est fréquent dans les autres clusters ; il permet d’identifier les mots distinctifs d’un topic.
+:::
+
+
 
 ## Résultats BERTopic
 
+:::{.columns}
+
+::: {.column width="70%"}
 ![](img/BERT.png)
+:::
+
+::: {.column width="30%"}
+* <span style="color:#FF69B4">en rose</span> : temps et conditions de travail
+* <span style="color:#1E90FF">en bleu</span> : *bruit*
+* <span style="color:#FF0000">en rouge</span> : contingent annuel
+* <span style="color:#32CD32">en vert</span> : congés et rémunération
+:::
+
+:::
+
+
+
+## Résumé BERTopic/LDA
+
+::: {.callout-note title="LDA" .fragment}
+1. On part des mots pour construire les topics
+2. Approche fréquentielle
+3. Mots → topics
+:::
+
+::: {.callout-note title="BERTopic" .fragment}
+1. On part des documents pour former des groupes (clusters) qui deviennent les topics, puis on les décrit avec des mots
+2. Approche contextuelle
+3. Documents → clusters → topics <- mots
+:::
 
 ## La modélisation thématique : conclusion
 
+* Définir la problématique
 * Nécessité de nettoyer les documents
+* Sur les heures supplémentaires, résultats de LDA et BERTopic concordants
+* Possibilité de caractériser les thématiques par sous-thématiques
+* (Ou de caractériser le corpus en thématiques)

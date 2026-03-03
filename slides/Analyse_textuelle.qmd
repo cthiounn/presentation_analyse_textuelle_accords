@@ -149,12 +149,17 @@ naturel
 | **Top 10 des mots les plus fréquents**        | travail: 19 (1.60%)<br>accord: 17 (1.45%)<br>article: 12 (1.02%)<br>salariés: 10 (0.84%)<br>présent: 9 (0.79%)<br>jours: 9 (0.75%)<br>salarié: 8 (0.72%)<br>temps: 8 (0.68%)<br>être: 6 (0.57%)<br>entreprise: 6 (0.53%) | travail: 19 (1.60%)<br>salari: 19 (1.57%)<br>accord: 18 (1.54%)<br>articl: 13 (1.13%)<br>jour: 11 (0.95%)<br>présent: 11 (0.94%)<br>part: 9 (0.80%)<br>temp: 8 (0.68%)<br>disposit: 7 (0.63%)<br>cet: 7 (0.63%) | travail: 19 (1.63%)<br>accord: 19 (1.57%)<br>article: 14 (1.16%)<br>salarié: 13 (1.11%)<br>jour: 11 (0.96%)<br>présent: 10 (0.84%)<br>pouvoir: 9 (0.76%)<br>temps: 8 (0.69%)<br>entreprise: 7 (0.66%)<br>être: 7 (0.60%) |
 </div>
 
+## L'analyse fréquentielle : effet Stemming
+
+![](img/sankey_preprocessing.png)
+
+
 ## L'analyse fréquentielle : Bigrams
 
 ::: {.panel-tabset}
 
 
-### Bigram brut
+### Bigrams bruts
 ![](img/bigrams_brut.png){style="width: 800px; height: 400px;"}
 
 ### + Stem
@@ -174,7 +179,7 @@ naturel
 ::: {.panel-tabset}
 
 
-### Trigram brut
+### Trigrams bruts
 ![](img/trigrams_brut.png){style="width: 800px; height: 400px;"}
 
 ### + Stem
@@ -188,14 +193,23 @@ naturel
 
 :::
 
-## L'analyse fréquentielle : accord thématique
+## L'analyse fréquentielle : thématique
 
-* Raisonnement précédent en population générale
-* on vous fournit la métadonnée suivante : les thématiques (brutes et redressées)
+:::{.fragment .center}
+*Raisonnement précédent en population générale*
+:::
+
+:::{.fragment .center}
+on vous fournit la métadonnée suivante : les thématiques (brutes et redressées)
+:::
+
 * télétravail : oui/non
 * heures supplémentaire : oui/non
 * CET : oui/non   ... et etc
-* **Si on se restreint à une thématique, est-ce que la distribution lexicale est similaire ?**
+	
+<div class="revealjs fragment" style="border: 2px solid #4CAF50; padding: 15px; border-radius: 8px; background-color:#f9f9f9;text-align: center;">
+**Si on se restreint à une thématique, est-ce que la distribution lexicale est similaire ?**
+</div>
 
 ## L'analyse fréquentielle : heures supplémentaires - bigrams
 
