@@ -5,14 +5,19 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Set up quarto
         uses: quarto-dev/quarto-actions/setup@v2
+
       - name: Publish slides
         uses: quarto-dev/quarto-actions/publish@v2
         with:
