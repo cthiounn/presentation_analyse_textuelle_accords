@@ -22,3 +22,11 @@
     width: 100x !important;
 }
 
+ .reveal .highlight {
+  background-color: #fffa9e; /* subtle yellow */
+  font-weight: bold;
+}
+
+ .reveal .center {
+  text-align: center;
+}

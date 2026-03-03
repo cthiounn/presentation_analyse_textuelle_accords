@@ -2,23 +2,45 @@
 
 ## La modélisation thématique : quezako ?!
 
-* Aussi connu sous le nom de topic modeling
-* Permet de trouver des thématiques latentes
+::: {.fragment .center}
+*Aussi connu sous le nom de topic modeling*
+:::
 
+::: {.fragment .center} 
+Permet de trouver des thématiques latentes
+:::
+ 
+:::{.fragment .center}
+![](img/LDA_2_topics.png){width=900px}
+:::
 
-## La modélisation thématique : principes généraux
+## La modélisation thématique 
 
-1. Un document est composé de mots
-2. Les mots ne sont pas choisis au hasard
-3. Certains mots sont des marqueurs de sujets (topic)
-* Hypothèse centrale : un document est un mélange de sujets et un sujet est composé d'un distribution particulière de mots
-* But : découvrir/construire les sujets, en observant les distributions des mots, dans le corpus et dans les documents
+::: {.callout-note title="Principes généraux" .fragment}
+1. **Un document est composé de mots**  
+2. **Les mots ne sont pas choisis au hasard**  
+3. **Certains mots sont des marqueurs de sujets (topic)**
+:::
+
+::: {.callout-important title="Hypothèse centrale" .fragment}
+Un document est un **mélange de sujets** et chaque sujet est caractérisé par une **distribution particulière de mots**.
+:::
+
+::: {.callout-tip title="Objectif" .fragment}
+Découvrir / construire les sujets en observant les distributions des mots, tant au niveau du **corpus** que des **documents individuels**.
+:::
 
 
 ## La modélisation thématique : deux applications
 
-* En population générale : *retrouve t'on les thématiques déclarées/redressées ?*
-* En population restreinte à une thématique : *quels sont les sujets usuels traités ?*
+::: {.callout-note title="Deux applications" .fragment}
+1. *En population générale* : **retrouve t'on les thématiques déclarées/redressées ?** (classification)
+2. *En population restreinte à une thématique* : **quels sont les sujets usuels traités ?** (caractérisation en sous-classes)
+:::
+
+::: {.callout-tip title="Bonus" .fragment}
+Pour un accord donné, quels sont les sujets traités ? (classification multiples en sous-classes)
+:::
 
 
 
@@ -38,43 +60,175 @@
 
 ## Exemple
 
+Soit deux sujets et leur distribution :
 
-> sujet_1 = CET; sujet_2 = télétravail
+:::: {.columns}
 
-Soit la distribution suivante:
+::: {.column width="52%" .fragment}
 
-* sujet_1_distribution = {"compte":0.16,"CET":0.5,"épargne":0.16,"temps":0.16}
-* sujet_2_distribution = {"télétravail":0.7,"droit":0.15,"déconnexion":0.15}
+| Mot | Rép. | % |
+|-----|------|----|
+| CET | ███████ | 50 % |
+| Compte | ██ | 16 % |
+| Épargne | ██ | 16 % |
+| Temps | ██ | 16 % |
 
-> Génération de 2 mots (N=2)
+:::
 
-Génération de la distribution en sujet du document (admettons sujet_1=3/4, sujet_2=1/4)
-Pour le premier mot :
+::: {.column width="48%"  .fragment}
 
-* selection d'un sujet selon la distribution 3/4 ; 1/4   => sujet_1
-* parmi la distribution du sujet_1 ={"compte":0.16,"CET":0.5,"épargne":0.16,"temps":0.16}, on tire un mot  => "CET"
+| Mot | Rép. | % |
+|-----|------|----|
+| Télétravail | ██████████ | 70 % |
+| Droit | ██ | 15 % |
+| Déconnexion | ██ | 15 % |
 
->phrase générée = CET
+:::
+
+::::
 
 
-## Exemple
 
-Pour le deuxième mot : 
-* selection d'un sujet selon la distribution 3/4 ; 1/4   => sujet_1
-* parmi la distribution du sujet_1 ={"compte":0.16,"CET":0.5,"épargne":0.16,"temps":0.16}, on tire un mot  => "compte"
+## Exemple : Génération de 2 mots (N=2)
 
->phrase générée = CET compte
+:::{.fragment}
+<table>
+  <thead>
+    <tr>
+      <th>Sujet</th>
+      <th>Répartition</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="highlight">
+      <td>Sujet 1</td>
+      <td>███████████</td>
+      <td>75%</td>
+    </tr>
+    <tr >
+      <td>Sujet 2</td>
+      <td>███</td>
+      <td>25%</td>
+    </tr>
+  </tbody>
+</table>
+:::
+
+:::{.fragment}
+<p>Pour le premier mot :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mot</th>
+      <th>Rép.</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="highlight">
+      <td>CET</td>
+      <td>███████</td>
+      <td>50%</td>
+    </tr>
+    <tr >
+      <td>Compte</td>
+      <td>██</td>
+      <td>16%</td>
+    </tr>
+    <tr >
+      <td>Épargne</td>
+      <td>██</td>
+      <td>16%</td>
+    </tr>
+    <tr>
+      <td>Temps</td>
+      <td>██</td>
+      <td>16%</td>
+    </tr>
+  </tbody>
+</table>
+:::
+
+## Exemple : Génération de 2 mots (N=2)
+
+
+:::{.fragment}
+<table>
+  <thead>
+    <tr>
+      <th>Sujet</th>
+      <th>Répartition</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sujet 1</td>
+      <td>███████████</td>
+      <td>75%</td>
+    </tr>
+    <tr class="highlight">
+      <td>Sujet 2</td>
+      <td>███</td>
+      <td>25%</td>
+    </tr>
+  </tbody>
+</table>
+:::
+
+:::{.fragment}
+Pour le deuxième mot :
+
+<table>
+  <thead>
+    <tr>
+      <th>Mot</th>
+      <th>Rép.</th>
+      <th>%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="highlight">
+      <td>Télétravail</td>
+      <td>██████████</td>
+      <td>70%</td>
+    </tr>
+    <tr>
+      <td>Droit</td>
+      <td>██</td>
+      <td>15%</td>
+    </tr>
+    <tr>
+      <td>Déconnexion</td>
+      <td>██</td>
+      <td>15%</td>
+    </tr>
+  </tbody>
+</table>
+
+:::
+
 
 
 ## LDA : découverte de topics 
 
-* *a posteriori*, les documents sont *a priori* supposés générés par la méthode précédente
-* un nombre de sujets à définir (**hyperparamètre K**), car on ne peut pas savoir *a priori* combien de sujets composent les documents
-* Gibbs-Sampling :
-	1. Initialiser aléatoirement une attribution de sujets aux mots du corpus (**N nombre de mots total**).
-	2. Mettre à jour ces attributions en fonction de la probabilité conditionnelle d'un mot appartenant à un sujet donné, basée sur les occurrences dans le corpus. (*)
-	3. Répéter l’opération jusqu’à convergence (**I nombre d'itérations**).
-* Complexité : O(I*N*K)
+::: {.callout-note title="Hypothèses" .fragment}
+1. *a posteriori*, les documents sont supposés générés par la méthode précédente
+2. un nombre de sujets à définir (**hp. K**)
+:::
+
+
+::: {.callout-note title="Gibbs-Sampling" .fragment}
+1. Initialiser aléatoirement une attribution de sujets aux mots du corpus (**N**=*#total*).
+2. Mettre à jour ces attributions en fonction de la probabilité conditionnelle d'un mot appartenant à un sujet donné, basée sur les occurrences dans le corpus. (*)
+3. Répéter l’opération jusqu’à convergence (**hp. I nombre d'itérations**).
+:::
+	
+::: {.callout-tip title="Complexité algorithmique" .fragment}
+  fonction des hyperparamètres : O(I\*N\*K)   -> arbitrage I et K
+:::
 
 
 ## Problèmes LDA
@@ -88,16 +242,19 @@ Pour le deuxième mot :
 
 ## Solutions LDA
 
+::: {.callout-tip title="Nettoyage" .fragment}
+1. Enlever les parties non pertinentes du document (préambule) <- utilisation d'une modèle de production de sommaire
+2. Enlever les mots rares (présent dans moins de X documents) et les mots trop présents (présent dans Y% des documents)
+:::
 
-* Nettoyage :
-	* enlever les parties non pertinentes du document (préambule) <- utilisation d'une modèle de production de sommaire
-	* enlever les mots rares (présent dans moins de X documents) et les mots trop présents (présent dans Y% des documents)
-* Choix de l'hyperparamètre K :
-	* grid search avec maximisation de la cohérence intra-topic
-	* à dire d'experts
-* Choix de l'hyperparamètre I :
-	* grand si possible pour assurer la convergence de Gibbs-Sampling
+::: {.callout-tip title="Choix de K" .fragment}
+1. Grid search avec maximisation de la cohérence intra-topic
+2. A dire d'experts
+:::
 
+::: {.callout-tip title="Choix de I" .fragment}
+Grand si possible pour assurer la convergence de Gibbs-Sampling
+:::
 
 ## Nettoyage LDA
 

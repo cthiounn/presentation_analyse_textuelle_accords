@@ -2,51 +2,102 @@
 
 ## L'analyse textuelle : quezako ?!
 
-*  Ensemble des méthodes informatisées permettant de traiter le langage 
+
+::: {.callout-note title="Analyse textuelle" .fragment}
+Ensemble des méthodes informatisées permettant de traiter le langage 
 naturel
-* Exemples :
-	* Analyse fréquentielle (bags of word, n-grams)
-	* Analyse thématique (Latent dirichlet allocation, BERTopic)
-	* Extraction d’information structurée (RAG avec LLM)
-	* Etc.
+:::
+
+::: {.callout-tip title="Exemples" .fragment}
+
+📊 Analyse fréquentielle (bags of words, n-grams)
+
+🧩 Analyse thématique (Latent Dirichlet Allocation, BERTopic)
  
+📝 Extraction d’information structurée (RAG avec LLM)
+
+…etc.
+
+:::
  
 ## L'analyse textuelle : la problématique
 
-On vous donne un corpus de textes/documents 
+:::{.fragment .center}
+*On vous donne un corpus de textes/documents*
+:::
 
-* Que faites-vous ? 
+<br />
+
+:::{.fragment .center}
+**Que faites-vous ?**
+:::
+
+<br />
+
+:::{.fragment .center}
   ![](img/interrogation.png)
-
+:::
 
 ## Première solution
 
-Evident mais à rappeler : 
+
+:::{.fragment .center}
+*Evident mais à rappeler*
+:::
+
+<br />
+
+:::{.fragment .center}
+![](img/detective.png)
+:::
+
+<br />
+
+:::{.fragment .center}
+  **Ouvrir quelques documents !**
+:::
+ 
 
 
-* Ouvrir quelques documents !
-  ![](img/detective.png)
+
+
+  
  
 
 ## L'analyse fréquentielle : compter les mots
 
-* approche sac de mots (bags of word)
-  ![](img/scrabble.jpg){width=600px}
-  
+:::{.fragment .center}
+**Approche sac de mots (bags of word)**
+:::
+
+:::{.fragment .center}
+![](img/scrabble.jpg){width=600px}
+:::
   
 ## L'analyse fréquentielle : Bag of words
 
+::: {.callout-note title="Bag of words" .fragment}
 * On compte les mots
-* L'ordre n'est ici pas considéré dans un premier temps
+* **L'ordre n'est ici pas considéré dans un premier temps**
+:::
+
+::: {.callout-tip title="Applications" .fragment}
 * Top 10 des mots les plus fréquents sur l'ensemble du corpus, sur un document (absolu, relatif)
 * Nuage de mots
-* O(n)
+:::
+
+
+::: {.callout-tip title="Complexité algorithmique" .fragment}
+*Linéaire à la taille du document* : **O(n)**
+:::
 
 
 ## L'analyse fréquentielle : Nuage de mots
 
-![](img/wordcloud_fr.png)
 
+:::{.center}
+![](img/wordcloud_fr.png){width=800px}
+:::
 
 ## L'analyse fréquentielle : prétraiter
 
@@ -72,10 +123,16 @@ Evident mais à rappeler :
 
 ## L'analyse fréquentielle : Compter en n-grams
 
+::: {.callout-note title="Généralisation aux n-grams" .fragment}
 * on peut compter les mots par deux, trois, quatre ... (n-grams)
 * Locutions (avoir lieu, faire attention), expressions (il pleut des cordes, jeter l'éponge)
 * [Collocations](https://www.tonitraduction.net/) (attitude courageuse, café allongé, café serré), mot composés (arc-en-ciel, intelligence artificielle, deep learning)
-* L'ordre importe !
+:::
+
+::: {.callout-important title="Hypothèse relachée" .fragment}
+* **L'ordre importe !**
+:::
+
 
 ## L'analyse fréquentielle : application {.scrollable}
 
@@ -84,42 +141,52 @@ Evident mais à rappeler :
 </div>
 
 <div class="fragment" data-fragment-index="2">
-| Statistiques / Top 10                         | Nettoyage des Stopwords                                                                                                                                                                                                                                                         | Nettoyage des Stopwords + Stemming                                                                                                                                                                                                                                                | Nettoyage des Stopwords + Lemmatisation                                                                                                                                                                                                                                                         |
+| Statistiques / Top 10   ^[en milliers, arrondis à l'inférieur]                      | Nettoyage des Stopwords                                                                                                                                                                                                                                                         | Nettoyage des Stopwords + Stemming                                                                                                                                                                                                                                                | Nettoyage des Stopwords + Lemmatisation                                                                                                                                                                                                                                                         |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nombre de mots dans le corpus**             | 2 439 791                                                                                                                                                                                                                                                        | 2 439 791                                                                                                                                                                                                                                               | 2 439 791                                                                                                                                                                                                                                                        |
-| **Nombre de mots hors mots-vides**            | 1 214 943                                                                                                                                                                                                                                                        | 1 214 943                                                                                                                                                                                                                                               | 1 217 223                                                                                                                                                                                                                                                        |
-| **Nombre de mots différents hors mots-vides** | 33 562                                                                                                                                                                                                                                                           | 23 546                                                                                                                                                                                                                                                  | 22 237                                                                                                                                                                                                                                                           |
-| **Top 10 des mots les plus fréquents**        | travail: 19 491 (1.60%)<br>accord: 17 573 (1.45%)<br>article: 12 360 (1.02%)<br>salariés: 10 162 (0.84%)<br>présent: 9 657 (0.79%)<br>jours: 9 121 (0.75%)<br>salarié: 8 720 (0.72%)<br>temps: 8 304 (0.68%)<br>être: 6 903 (0.57%)<br>entreprise: 6 392 (0.53%) | travail: 19 494 (1.60%)<br>salari: 19 076 (1.57%)<br>accord: 18 674 (1.54%)<br>articl: 13 776 (1.13%)<br>jour: 11 529 (0.95%)<br>présent: 11 426 (0.94%)<br>part: 9 685 (0.80%)<br>temp: 8 305 (0.68%)<br>disposit: 7 688 (0.63%)<br>cet: 7 643 (0.63%) | travail: 19 830 (1.63%)<br>accord: 19 084 (1.57%)<br>article: 14 123 (1.16%)<br>salarié: 13 570 (1.11%)<br>jour: 11 683 (0.96%)<br>présent: 10 172 (0.84%)<br>pouvoir: 9 247 (0.76%)<br>temps: 8 457 (0.69%)<br>entreprise: 7 980 (0.66%)<br>être: 7 277 (0.60%) |
+| **Nombre de mots dans le corpus**             | 2 439 | 2 439 | 2 439 |
+| **Nombre de mots hors mots-vides**            | 1 214 | 1 214 | 1 214 |
+| **Nombre de mots différents hors mots-vides** | 33 562 | 23 546 | 22 237
+| **Top 10 des mots les plus fréquents**        | travail: 19 (1.60%)<br>accord: 17 (1.45%)<br>article: 12 (1.02%)<br>salariés: 10 (0.84%)<br>présent: 9 (0.79%)<br>jours: 9 (0.75%)<br>salarié: 8 (0.72%)<br>temps: 8 (0.68%)<br>être: 6 (0.57%)<br>entreprise: 6 (0.53%) | travail: 19 (1.60%)<br>salari: 19 (1.57%)<br>accord: 18 (1.54%)<br>articl: 13 (1.13%)<br>jour: 11 (0.95%)<br>présent: 11 (0.94%)<br>part: 9 (0.80%)<br>temp: 8 (0.68%)<br>disposit: 7 (0.63%)<br>cet: 7 (0.63%) | travail: 19 (1.63%)<br>accord: 19 (1.57%)<br>article: 14 (1.16%)<br>salarié: 13 (1.11%)<br>jour: 11 (0.96%)<br>présent: 10 (0.84%)<br>pouvoir: 9 (0.76%)<br>temps: 8 (0.69%)<br>entreprise: 7 (0.66%)<br>être: 7 (0.60%) |
 </div>
 
-## L'analyse fréquentielle : application bigrams
+## L'analyse fréquentielle : Bigrams
 
-<div style="position: relative; width: 800px; height: 800px;">
+::: {.panel-tabset}
 
-![](img/bigrams_brut.png){.fragment  style="position:absolute; top:0; left:0; object-fit:contain;"}
 
-![](img/bigrams_stem.png){.fragment  style="position:absolute; top:0; left:0; object-fit:contain;"}
+### Bigram brut
+![](img/bigrams_brut.png){style="width: 800px; height: 400px;"}
 
-![](img/bigrams_lem.png){.fragment  style="position:absolute; top:0; left:0;  object-fit:contain;"}
+### + Stem
+![](img/bigrams_stem.png){style="width: 800px; height: 400px;"}
 
-![](img/bigrams_communs.png){.fragment  style="position:absolute; top:0; left:0;  object-fit:contain;"}
+### + Lem
+![](img/bigrams_lem.png){style="width: 800px; height: 400px;"}
 
-</div>
+### >Communs
+![](img/bigrams_communs.png){style="width: 800px; height: 400px;"}
 
-## L'analyse fréquentielle : application trigrams
+:::
 
-<div style="position: relative; width: 800px; height: 800px;">
+## L'analyse fréquentielle : Trigrams
 
-![](img/trigrams_brut.png){.fragment  style="position:absolute; top:0; left:0; object-fit:contain;"}
 
-![](img/trigrams_stem.png){.fragment  style="position:absolute; top:0; left:0; object-fit:contain;"}
+::: {.panel-tabset}
 
-![](img/trigrams_lem.png){.fragment  style="position:absolute; top:0; left:0;  object-fit:contain;"}
 
-![](img/trigrams_communs.png){.fragment  style="position:absolute; top:0; left:0;  object-fit:contain;"}
+### Trigram brut
+![](img/trigrams_brut.png){style="width: 800px; height: 400px;"}
 
-</div>
+### + Stem
+![](img/trigrams_stem.png){style="width: 800px; height: 400px;"}
 
+### + Lem
+![](img/trigrams_lem.png){style="width: 800px; height: 400px;"}
+
+### >Communs
+![](img/trigrams_communs.png){style="width: 800px; height: 400px;"}
+
+:::
 
 ## L'analyse fréquentielle : accord thématique
 
@@ -143,7 +210,7 @@ Sur 1000 accords d'heures supplémentaires (label redressé) signés en 2024
 ## L'analyse fréquentielle : heures supplémentaires - ngrams
 
 <div class="fragment" data-fragment-index="1">
-📊 Pour chaque document > fréquence relative des ngrams (#n-grams/longueur du document) > moyenne
+📊 Pour chaque document → fréquence relative des ngrams (#n-grams/longueur du document) → moyenne
 </div>
 
 <div class="fragment" data-fragment-index="2">
@@ -153,17 +220,14 @@ Sur 1000 accords d'heures supplémentaires (label redressé) signés en 2024
 ## L'analyse fréquentielle : heures supplémentaires - classifieur
 
 <div class="fragment" data-fragment-index="1">
-![](img/distribution_ngram.png){width=900px}
+![](img/distribution_ngram.png){width=850px}
 </div>
-
 <div class="fragment" data-fragment-index="2">
-$$
-\text{Classifieur}(w) = \mathbf{1}_{\{\text{fréquence_relative_bigram_hs}(w) \ge 0{,}002\}}
-$$
+$$\text{Classifieur}(w) = \mathbf{1}_{\{\text{fréquence_relative_bigram_hs}(w) \ge 0{,}002\}}$$
 </div>
 
 
-## L'analyse fréquentielle : heures supplémentaires - matrice de confusion
+## L'analyse fréquentielle : matrice de confusion
 
 <div class="fragment" data-fragment-index="1">
 Classifieur appliqué à un échantillon aléatoire de 1000
@@ -201,6 +265,6 @@ FP et FN parfois faux
 
 🌐 Généralisable aux autres thématiques, mais nécessite de décider des règles (n-grammes + seuils)
 
-⁉️ En creux, qu'est-ce qu'une thématique ????!!!
+⁉️ *En creux, qu'est-ce qu'une thématique ????!!!*
 
 
