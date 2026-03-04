@@ -111,26 +111,40 @@ LLM : lecture du prompt enrichi + génération d’une réponse
 	
 	• Par article : Structure logique  du document  	
 
+:::{.fragment}
+
+![](img/perf.png)
+
+:::
 
 ## Analyse de sensibilité à l’hyperparamètre k  
 
-:::{.fragment}
-📌 k = nombre de segments récupérés
-:::
+:::{.columns}
 
-:::{.fragment}
+::: {.column width="40%"}
+📌 k = nombre de segments récupérés
+
 🔍 Analyse Llama3.1
 
 	• Découpage par article : optima locaux à k = 2 et k = 6
 	• Découpage naïf : –20 pts de précision à k = 5 (segments ≥ 15 000 caractères)
-:::
 
-:::{.fragment}
 ⚠️ Conclusion 
 
 	• Trop d’articles non pertinents → dégradation de la précision
+
 :::
 
+::: {.column width="60%"}
+
+
+![](img/sensibilite.png)
+
+
+:::
+
+
+:::
 
 ## Les limites du modèle RAG 
 

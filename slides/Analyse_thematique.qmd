@@ -46,9 +46,12 @@ Pour un accord donné, quels sont les sujets traités ? (classification multiple
 
 ## Latent Dirichlet Allocation (LDA)
 
+::: {.callout-note title="Latent Dirichlet Allocation" .fragment}
 * Mécanisme de génération de documents, en se donnant des topics et leur distribution textuelle
 * "Problème dual" : à document généré, deviner les topics qui ont servi, en se donnant un nombre k de topics
-	* par approximation computationnelle 
+	* par approximation computationnelle
+:::
+
 
 ## LDA : structure générative
 
@@ -243,7 +246,7 @@ Pour le deuxième mot :
 ## Solutions LDA
 
 ::: {.callout-tip title="Nettoyage" .fragment}
-1. Enlever les parties non pertinentes du document (préambule) <- utilisation d'une modèle de production de sommaire
+1. Enlever les parties non pertinentes du document (préambule) ← utilisation d'une modèle de production de sommaire
 2. Enlever les mots rares (présent dans moins de X documents) et les mots trop présents (présent dans Y% des documents)
 :::
 
@@ -259,6 +262,14 @@ Grand si possible pour assurer la convergence de Gibbs-Sampling
 ## Nettoyage LDA
 
 ![](img/LDA_preprocessing.png)
+
+
+## Méthode LDA appliqué aux accords
+
+1. Utilisation d’un modèle d’extraction de sommaire (Memsum)
+2. Nettoyage des articles génériques
+3. Extraction des articles restants (= documents)
+4. Application d’une méthode d’analyse thématique
 
 
 ## Visualisation LDA
@@ -351,7 +362,7 @@ Plotly.newPlot('myPlot', data, layout, {responsive:true});
 :::{.columns}
 
 ::: {.column width="70%"}
-![](img/BERT.png)
+![](img/BERT.png){width=600px}
 :::
 
 ::: {.column width="30%"}
@@ -376,7 +387,7 @@ Plotly.newPlot('myPlot', data, layout, {responsive:true});
 ::: {.callout-note title="BERTopic" .fragment}
 1. On part des documents pour former des groupes (clusters) qui deviennent les topics, puis on les décrit avec des mots
 2. Approche contextuelle
-3. Documents → clusters → topics <- mots
+3. Documents → clusters → topics ← mots
 :::
 
 ## La modélisation thématique : conclusion

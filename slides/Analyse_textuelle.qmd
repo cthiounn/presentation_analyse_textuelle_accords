@@ -273,12 +273,16 @@ FP et FN parfois faux
 
 ## L'analyse fréquentielle : conclusion
 
+:::{.fragment}
 ⚡ Possibilité de construire un classifieur rapide à partir des mots-clefs
 
 🏆 Performance excellente, pour reproduire et remettre en question les thématiques déclarées
 
 🌐 Généralisable aux autres thématiques, mais nécessite de décider des règles (n-grammes + seuils)
 
-⁉️ *En creux, qu'est-ce qu'une thématique ????!!!*
+:::
 
+:::{.fragment}
+⁉️ *En creux, qu'est-ce qu'une thématique ????!!!*
+:::
 
