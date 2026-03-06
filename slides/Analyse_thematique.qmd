@@ -230,15 +230,15 @@ Pour le deuxième mot :
 :::
 	
 ::: {.callout-tip title="Complexité algorithmique" .fragment}
-  fonction des hyperparamètres : O(I\*N\*K)   -> arbitrage I et K
+  fonction des hyperparamètres : O(I\*N\*K)   → arbitrage I et K
 :::
 
 
 ## Problèmes LDA
 
 * coût computationnel :
-	* sur corpus volumineux -> échantillon
-	* sur document long (N) -> (N)ettoyer
+	* sur corpus volumineux → échantillon
+	* sur document long (N) → (N)ettoyer
 * choix de l'hyperparamètre K (nombre de topics)
 * choix de l'hyperparamètre I (nombre d'itérations)
 
@@ -274,7 +274,7 @@ Grand si possible pour assurer la convergence de Gibbs-Sampling
 
 ## Visualisation LDA
 
-<iframe src="anim/lda_vis.html" width="80%" height="80%"></iframe>
+<iframe src="anim/lda_vis.html" width="100%" height="100%"></iframe>
 
 ## Visualisation LDA
 
