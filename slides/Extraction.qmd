@@ -213,3 +213,8 @@ Merci de votre attention !
 
 Des questions ? 
 :::
+
+:::{.fragment .center}
+
+[Replay JMS](https://youtu.be/9K5CaA-Q6ys?list=PLLfRO44HULrmpGmHWjB_ue_HPjV145mWH&t=1821)
+:::

@@ -278,7 +278,24 @@ Grand si possible pour assurer la convergence de Gibbs-Sampling
 
 ## Visualisation LDA
 
-![](img/LDA.png)
+
+:::{.columns}
+
+::: {.column width="70%"}
+![](img/LDA.png){width=700px}
+:::
+
+::: {.column width="30%"}
+* <span style="color:#FF69B4">en rose</span> : congés et rémunération
+* <span style="color:#f4ff2b">en jaune</span> : *bruit*
+* <span style="color:#FF0000">en rouge</span> : temps et conditions de travail
+* <span style="color:#1E90FF">en bleu</span> : heures supplémentaires
+:::
+
+:::
+
+
+
 
 ## BERTopic
 

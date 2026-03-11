@@ -115,10 +115,13 @@ naturel
 🌱 stemming → racine 
 </div>
 <div class="fragment" data-fragment-index="2">
-📖 lemmatiser → forme grammaticale canonique ~ notion/concept
+[versus](https://fr.wikipedia.org/wiki/Racinisation#Racinisation_vs._lemmatisation)
 </div>
 <div class="fragment" data-fragment-index="3">
-![](img/pretraitements.png){width=800px}
+📖 lemmatiser →  lemme : forme grammaticale canonique ~ notion/concept
+</div>
+<div class="fragment" data-fragment-index="4">
+![](img/pretraitements.png){width=600px}
 </div>
 
 ## L'analyse fréquentielle : Compter en n-grams
